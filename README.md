@@ -46,4 +46,5 @@ Start here:
 3. npm install d3
 4. npm install d3-org-chart
 5. npm install next-transpile-modules
+6. npm install html2canvas jspdf
    

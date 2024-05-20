@@ -1,9 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { OrgChart } from 'd3-org-chart';
 import * as d3 from 'd3'; // Import d3 library
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 const OrgChartComponent = () => {
   const chartRef = useRef(null);
+  const chartInstance = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +22,7 @@ const OrgChartComponent = () => {
 
         // Render the organization chart
         if (chartRef.current) {
-          const chart = new OrgChart()
+          chartInstance.current = new OrgChart()
             .svgWidth(window.innerWidth)   // Dynamically set svg width to the full viewport width
             .svgHeight(window.innerHeight)  // Dynamically set svg height to the full viewport height
             .nodeHeight((d) => 110) // 85 + 25
@@ -49,7 +52,7 @@ const OrgChartComponent = () => {
             .render();
 
           // Dynamically adjust the height of the container
-          chart.fit();
+          chartInstance.current.fit();
         }
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -59,7 +62,36 @@ const OrgChartComponent = () => {
     fetchData();
   }, []);
 
-  return <div className="chart-container" ref={chartRef} />;
+  const downloadPdf = () => {
+    chartInstance.current.exportImg({
+      save: false,
+      full: true,
+      onLoad: (base64) => {
+        var pdf = new jsPDF();
+        var img = new Image();
+        img.src = base64;
+        img.onload = function () {
+          pdf.addImage(
+            img,
+            'JPEG',
+            5,
+            5,
+            595 / 3,
+            ((img.height / img.width) * 595) / 3
+          );
+          pdf.save('chart.pdf');
+        };
+      },
+    });
+  };
+
+  return (
+    <div>
+      <button onClick={downloadPdf}>Export PDF</button>
+      <div className="chart-container" ref={chartRef}></div>
+    </div>
+  );
 };
 
 export default OrgChartComponent;
+
