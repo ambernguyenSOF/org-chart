@@ -19,16 +19,18 @@ const OrgChartComponent = () => {
 
         // Render the organization chart
         if (chartRef.current) {
-          new OrgChart()
-            .nodeHeight((d) => 85 + 25)
-            .nodeWidth((d) => 220 + 2)
+          const chart = new OrgChart()
+            .svgWidth(window.innerWidth)   // Dynamically set svg width to the full viewport width
+            .svgHeight(window.innerHeight)  // Dynamically set svg height to the full viewport height
+            .nodeHeight((d) => 110) // 85 + 25
+            .nodeWidth((d) => 222) // 220 + 2
             .childrenMargin((d) => 50)
             .compactMarginBetween((d) => 35)
             .compactMarginPair((d) => 30)
             .neighbourMargin((a, b) => 20)
             .nodeContent((d, i, arr, state) => {
               const color = '#FFFFFF';
-              const imageDiffVert = 25 + 2;
+              const imageDiffVert = 27; // 25 + 2
               return `
                 <div style='width:${d.width}px;height:${d.height}px;padding-top:${imageDiffVert - 2}px;padding-left:1px;padding-right:1px'>
                   <div style="font-family: 'Inter', sans-serif;background-color:${color};  margin-left:-1px;width:${d.width - 2}px;height:${d.height - imageDiffVert}px;border-radius:10px;border: 1px solid #E4E2E9">
@@ -41,9 +43,13 @@ const OrgChartComponent = () => {
                 </div>
               `;
             })
-            .container('.chart-container')
+            .container(chartRef.current)
             .data(parsedData)
+            .layout('bottom') // Set the layout to 'bottom'
             .render();
+
+          // Dynamically adjust the height of the container
+          chart.fit();
         }
       } catch (error) {
         console.error('Error fetching data:', error);
