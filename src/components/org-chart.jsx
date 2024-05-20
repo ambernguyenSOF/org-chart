@@ -96,23 +96,20 @@ const OrgChartComponent = () => {
       save: false,
       full: true,
       onLoad: (base64) => {
-        var pdf = new jsPDF();
-        var img = new Image();
+        const pdf = new jsPDF('landscape'); // Specify landscape orientation
+        const img = new Image();
         img.src = base64;
         img.onload = function () {
-          pdf.addImage(
-            img,
-            'JPEG',
-            5,
-            5,
-            595 / 3,
-            ((img.height / img.width) * 595) / 3
-          );
+          const aspectRatio = img.height / img.width;
+          const imgWidth = 300; // Width of A4 page in mm
+          const imgHeight = imgWidth * aspectRatio;
+          pdf.addImage(img, 'JPEG', 5, 5, imgWidth, imgHeight); // Adjust x, y, width, height as needed
           pdf.save('chart.pdf');
         };
       },
     });
   };
+  
 
   return (
     <div>
