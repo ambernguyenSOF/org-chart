@@ -151,6 +151,18 @@ const OrgChartComponent = () => {
     });
   };
 
+  const handleExpandAll = () => {
+    if (chartInstance.current) {
+      chartInstance.current.expandAll().render().fit();
+    }
+  };
+
+  const handleCollapseAll = () => {
+    if (chartInstance.current) {
+      chartInstance.current.collapseAll().render().fit();
+    }
+  };
+
   return (
     <div>
       <input
@@ -166,6 +178,8 @@ const OrgChartComponent = () => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
+      <button onClick={handleExpandAll}>Expand All</button>
+      <button onClick={handleCollapseAll}>Collapse All</button>
       <div className="chart-container" ref={chartRef}></div>
     </div>
   );
