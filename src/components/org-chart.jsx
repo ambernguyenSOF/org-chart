@@ -4,6 +4,8 @@ import * as d3 from 'd3';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 
+// function to get an array of intern ids (just for logging purposes)
+// input: dataset
 const getInternIds = (data) => {
   const internIds = [];
   data.forEach((person) => {
@@ -15,48 +17,75 @@ const getInternIds = (data) => {
   return internIds;
 };
 
+
+// function for filtering out interns from the dataset
+// input: dataset
+// input: includeInterns (state)
+// if inlcudeInterns is true, return all the data. if includeInterns is false, only keep people who's job_id is not intern
 const filterData = (data, includeInterns) => {
   if (includeInterns) return data;
   return data.filter(person => person.job_id !== "intern");
 };
 
+
+// Component for the org chart
 const OrgChartComponent = () => {
+
+  // useRef creates a reference to the DOM element chartRef
+  // used to tell the chart library exactly where on the webpage to draw the chart
   const chartRef = useRef(null);
+
+  // This reference holds the instance of the chart
+  // used to remember and keep working on the same chart without starting over every time something changes
   const chartInstance = useRef(null);
+
   const [includeInterns, setIncludeInterns] = useState(true); // State to track whether interns should be included or not
   const [chartData, setChartData] = useState(null); // State to store the chart data
 
+
+  // useEffect runs the fetchData function once the component mounts
   useEffect(() => {
     const fetchData = async () => {
       try {
         // Fetch the data from the provided URL
         const response = await fetch('/data.csv');
+
+        // reads teh reponse and converts it to text
         const data = await response.text();
 
         // Parse the data into the format expected by d3-org-chart
         const parsedData = d3.csvParse(data);
 
-        setChartData(parsedData); // Store the parsed data in state
+        setChartData(parsedData); // set the chartData state to the parsedData
 
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
+    // call fetchData
     fetchData();
   }, []);
 
+  // Rendering the org chart
+  // UseEffect runs this block of code whenver 'includeInterns' or 'chartData' changes
   useEffect(() => {
+
+    // checks if chartData is available
     if (chartData) {
+
+      // get internIds from chartData
       const internIds = getInternIds(chartData);
+
+      // filter the data based on whether includeInterns is true or false
       const filteredData = filterData(chartData, includeInterns);
 
       // Render the organization chart
-      if (chartRef.current) {
-        if (chartInstance.current) {
-          chartInstance.current.data(filteredData).render().fit(); // Update existing chart
-        } else {
-          chartInstance.current = new OrgChart()
+      if (chartRef.current) { // checks if chartRed is attached to a DOM element
+        if (chartInstance.current) { // checks if a chart instance already exists
+          chartInstance.current.data(filteredData).render().fit(); // Update existing chart with new data, re-renders, and fits in container
+        } else { // if no chart instance exists
+          chartInstance.current = new OrgChart() // initialize new OrgChart instance
             .svgWidth(window.innerWidth)
             .svgHeight(window.innerHeight)
             .nodeHeight((d) => 110)
