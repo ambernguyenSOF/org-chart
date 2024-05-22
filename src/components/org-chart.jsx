@@ -84,7 +84,7 @@ const OrgChartComponent = () => {
             .svgHeight(window.innerHeight)
             .nodeHeight((d) => 110)
             .nodeWidth((d) => 222)
-            .childrenMargin((d) => 50)
+            .childrenMargin((d) => 20) // made this smaller 
             .compactMarginBetween((d) => 35)
             .compactMarginPair((d) => 30)
             .neighbourMargin((a, b) => 20)
@@ -109,7 +109,8 @@ const OrgChartComponent = () => {
             .linkUpdate(function (d, i, arr) {
               d3.select(this)
                 .attr('stroke', d => d.data._upToTheRootHighlighted ? '#E27396' : '#ed6622')
-                .attr('stroke-width', d => d.data._upToTheRootHighlighted ? 5 : 2);
+                .attr('stroke-width', d => d.data._upToTheRootHighlighted ? 5 : 2)
+                
 
               if (d.data._upToTheRootHighlighted) {
                 d3.select(this).raise();
@@ -139,8 +140,10 @@ const OrgChartComponent = () => {
               nodeSelection.select('.node-button-div > div > div > span > svg > path')
                   .style('stroke', 'black')
                   .style('fill', 'black')
-})
+            })
             .render();
+
+            
 
           chartInstance.current.fit();
         }
