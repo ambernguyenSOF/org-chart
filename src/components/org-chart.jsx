@@ -159,11 +159,21 @@ const OrgChartComponent = () => {
                 .attr("y", 23);
             })
             .nodeUpdate(function (d, i, arr) {
-                d3.select(this)
-                  .select('.node-button-div > div')
-                //   .style('fill', 'blue')
+              var nodeSelection = d3.select(this);
+              
+              nodeSelection.select('.node-button-div > div')
                   .style('background', '#ED6622')
-              })
+                  .style('stroke', 'black');
+              
+              nodeSelection.selectAll('.node-button-div > div > div > span')
+                  .style('color', 'black')
+                  .style('font-weight', 'bold');
+
+              nodeSelection.select('.node-button-div > div > div > span > svg > path')
+                  .style('stroke', 'black')
+                  .style('fill', 'black')
+          })
+          
             .render();
 
           chartInstance.current.fit();
