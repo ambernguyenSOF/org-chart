@@ -160,6 +160,9 @@ const OrgChartComponent = () => {
             })
             .nodeUpdate(function (d, i, arr) {
               var nodeSelection = d3.select(this);
+
+              nodeSelection.select('.node-button-foreign-object')
+                  .attr('y', '5');
               
               nodeSelection.select('.node-button-div > div')
                   .style('background', '#ED6622')
