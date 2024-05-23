@@ -27,7 +27,7 @@ id,parentId,name,department,position,image,email,job_id
 125,124,Caleb,T2/Stem,Market Research,https://swx-strapi-events-images.s3.amazonaws.com/caleb.jpg,caleb.sutton.intern@sofwerx.org,intern
 126,124,Jonathan,T2/Stem,Market Research,https://swx-strapi-events-images.s3.amazonaws.com/jonathan.jpg,jonathan.castillo-negron.intern@sofwerx.org,intern
 127,124,Joseph,T2/Stem,Market Research,https://swx-strapi-events-images.s3.amazonaws.com/joseph.jpg,joseph.peacock.intern@sofwerx.org,intern
-128,100,Brian,CTO,CTO,https://swx-strapi-events-images.s3.amazonaws.com/brian.JPG,brian.andrews@sofwerx.org,staff
+128,100,Brian,CTO,CTO,https://swx-strapi-events-images.s3.amazonaws.com/brian.jpg,brian.andrews@sofwerx.org,staff
 129,128,Jack,CTO,Robotics,https://bumbeishvili.github.io/avatars/avatars/portrait11.png,tbd@sofwerx.org,intern
 130,128,Christian,CTO,Electrical Engineer,https://bumbeishvili.github.io/avatars/avatars/portrait50.png,christian.lovetere.intern@sofwerx.org,intern
 131,100,Marcus,Marketing,Marketing Manager,https://swx-strapi-events-images.s3.amazonaws.com/marcus.JPG,marcus.tatum@sofwerx.org,staff
