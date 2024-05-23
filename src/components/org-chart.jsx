@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { OrgChart } from 'd3-org-chart';
 import * as d3 from 'd3';
 import { jsPDF } from 'jspdf';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // function to get an array of intern ids (just for logging purposes)
 // input: dataset
@@ -94,7 +95,14 @@ const OrgChartComponent = () => {
               return `
                 <div style='width:${d.width}px;height:${d.height}px;padding-top:${imageDiffVert - 2}px;padding-left:1px;padding-right:1px'>
                   <div style="font-family: 'Open Sans', sans-serif;background-color:${color};margin-left:-1px;width:${d.width - 2}px;height:${d.height - imageDiffVert}px;border-radius:10px;border: 2px solid #ed6622">
-                    <div style="display:flex;justify-content:flex-end;margin-top:5px;margin-right:8px;color:white; font-weight:bold">${d.data.job_id}</div>
+                    <div style="display:flex;justify-content:flex-end;margin-top:5px;margin-right:8px;color:white; font-weight:bold">
+                      <a href="https://teams.microsoft.com/l/chat/0/0?users=${encodeURIComponent(d.data.email)}" target="_blank" style="color:white;margin-right:5px;">
+                        <i class="fa-solid fa-comments"></i>
+                      </a>
+                      <a href="mailto:${d.data.email}" style="color:white;">
+                        <i class="fas fa-envelope"></i>
+                      </a>
+                    </div>
                     <div style="background-color:#ed6622;margin-top:${-imageDiffVert - 15}px;margin-left:${15}px;border-radius:100px;width:50px;height:50px;" ></div>
                     <div style="margin-top:${-imageDiffVert - 22.5}px;"><img src="${d.data.image}" style="margin-left:${17.5}px;border-radius:100px;width:45px;height:45px;" /></div>
                     <div style="font-size:15px;color:white;margin-left:20px;margin-top:3px; font-weight:bold">${d.data.name}</div>
@@ -103,6 +111,10 @@ const OrgChartComponent = () => {
                 </div>
               `;
             })
+            
+            
+            
+                     
             .container(chartRef.current)
             .data(filteredData)
             .layout('bottom')

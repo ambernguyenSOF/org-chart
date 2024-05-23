@@ -1,37 +1,38 @@
-id,parentId,name,lastName,position,image,email,phone_number,hire_date,job_id,salary,commission_pct,department_id,job_min_salary,location_state,job_max_salary,department_name,department_location_id,department_location_street_address,department_location_postal_code,department_location_country_id,department_location_country_name,department_location_country_region_id,department_location_country_region_name
-100,,Leslie,King,Director,https://swx-strapi-events-images.s3.amazonaws.com/leslie.JPG,SKING,515.123.4567,2003-07-16T19:00:00.000Z,staff,24000,,90,20080,Washington,40000,Executive,1700,2004 Charade Rd,98199,US,United States of America,2,Americas
-101,100,Tony,Kochhar,Deputy Director,https://swx-strapi-events-images.s3.amazonaws.com/tony.JPG,NKOCHHAR,515.123.4568,2005-10-20T20:00:00.000Z,staff,17000,,90,15000,Washington,30000,Executive,1700,2004 Charade Rd,98199,US,United States of America,2,Americas
-102,101,Loretta,De Haan,Office Controller,https://bumbeishvili.github.io/avatars/avatars/portrait16.png,LDEHAAN,515.123.4569,2001-02-12T20:00:00.000Z,staff,17000,,90,15000,Washington,30000,Executive,1700,2004 Charade Rd,98199,US,United States of America,2,Americas
-103,102,Mike,Hunold,Accounts Payable,https://bumbeishvili.github.io/avatars/avatars/portrait17.png,AHUNOLD,590.423.4567,2006-02-02T20:00:00.000Z,staff,9000,,60,4000,Texas,10000,IT,1400,2014 Jabberwocky Rd,26192,US,United States of America,2,Americas
-104,102,Sally,Ernst,Business Admin,https://bumbeishvili.github.io/avatars/avatars/portrait18.png,BERNST,590.423.4568,2007-06-20T20:00:00.000Z,intern,6000,,60,4000,Texas,10000,IT,1400,2014 Jabberwocky Rd,26192,US,United States of America,2,Americas
-105,101,Claire,Austin,Events & Meetings Manager,https://swx-strapi-events-images.s3.amazonaws.com/claire.JPG,DAUSTIN,590.423.4569,2005-07-24T20:00:00.000Z,staff,4800,,60,4000,Texas,10000,IT,1400,2014 Jabberwocky Rd,26192,US,United States of America,2,Americas
-106,105,Tikila,Pataballa,Administrative Assistant,https://swx-strapi-events-images.s3.amazonaws.com/tikila.JPG,VPATABAL,590.423.4560,2006-03-04T20:00:00.000Z,staff,4800,,60,4000,Texas,10000,IT,1400,2014 Jabberwocky Rd,26192,US,United States of America,2,Americas
-107,105,Gabrille,Lorentz,Lead Event Coordinator,https://swx-strapi-events-images.s3.amazonaws.com/gaby.JPG,DLORENTZ,590.423.5567,2007-03-06T20:00:00.000Z,staff,4200,,60,4000,Texas,10000,IT,1400,2014 Jabberwocky Rd,26192,US,United States of America,2,Americas
-108,107,Kristen,Greenberg,Event Coordinator,https://bumbeishvili.github.io/avatars/avatars/portrait61.png,NGREENBE,515.124.4569,2002-09-16T19:00:00.000Z,staff,12008,,100,8200,Washington,16000,Finance,1700,2004 Charade Rd,98199,US,United States of America,2,Americas
-109,107,TBD,Faviet,Event Coordinator,https://bumbeishvili.github.io/avatars/avatars/portrait20.png,DFAVIET,515.124.4169,2002-09-15T19:00:00.000Z,staff,9000,,100,4200,Washington,9000,Finance,1700,2004 Charade Rd,98199,US,United States of America,2,Americas
-110,101,David,Chen,Lead Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/david.JPG,JCHEN,515.124.4269,2005-10-27T20:00:00.000Z,staff,8200,,100,4200,Washington,9000,Finance,1700,2004 Charade Rd,98199,US,United States of America,2,Americas
-111,110,Dennis,Sciarra,Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/dennis.JPG,ISCIARRA,515.124.4369,2005-10-29T20:00:00.000Z,staff,7700,,100,4200,Washington,9000,Finance,1700,2004 Charade Rd,98199,US,United States of America,2,Americas
-112,110,Steve,Urman,Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/steve.JPG,JMURMAN,515.124.4469,2006-04-06T20:00:00.000Z,staff,7800,,100,4200,Washington,9000,Finance,1700,2004 Charade Rd,98199,US,United States of America,2,Americas
-113,110,Stan,Popp,Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/stan.JPG,LPOPP,515.124.4567,2008-01-06T20:00:00.000Z,staff,6900,,100,4200,Washington,9000,Finance,1700,2004 Charade Rd,98199,US,United States of America,2,Americas
-114,101,Hansel,Raphaely,Software Developer / Manager,https://swx-strapi-events-images.s3.amazonaws.com/hansel.JPG,DRAPHEAL,515.127.4561,2003-01-06T20:00:00.000Z,staff,11000,,30,8000,Washington,15000,Purchasing,1700,2004 Charade Rd,98199,US,United States of America,2,Americas
-115,114,Terry,Khoo,Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/terry.JPG,AKHOO,515.127.4562,2003-06-17T19:00:00.000Z,staff,3100,,30,2500,Washington,5500,Purchasing,1700,2004 Charade Rd,98199,US,United States of America,2,Americas
-116,114,Landon,Baida,Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/landon.JPG,SBAIDA,515.127.4563,2006-01-23T20:00:00.000Z,staff,2900,,30,2500,Washington,5500,Purchasing,1700,2004 Charade Rd,98199,US,United States of America,2,Americas
-117,114,Kevin W.,Tobias,Senior System Administrator,https://swx-strapi-events-images.s3.amazonaws.com/dub.JPG,STOBIAS,515.127.4564,2005-08-23T20:00:00.000Z,staff,2800,,30,2500,Washington,5500,Purchasing,1700,2004 Charade Rd,98199,US,United States of America,2,Americas
-118,117,Kevin S.,Himuro,System Administrator,https://swx-strapi-events-images.s3.amazonaws.com/kevin.JPG,GHIMURO,515.127.4565,2006-12-14T20:00:00.000Z,staff,2600,,30,2500,Washington,5500,Purchasing,1700,2004 Charade Rd,98199,US,United States of America,2,Americas
-119,118,Kristian,Colmenares,IT Intern,https://swx-strapi-events-images.s3.amazonaws.com/kristian.JPG,KCOLMENA,515.127.4566,2007-09-09T20:00:00.000Z,intern,2500,,30,2500,Washington,5500,Purchasing,1700,2004 Charade Rd,98199,US,United States of America,2,Americas
-120,114,Amber,Weiss,Computer Science,https://swx-strapi-events-images.s3.amazonaws.com/amber.JPG,MWEISS,650.123.1234,2004-08-17T20:00:00.000Z,intern,8000,,50,5500,California,8500,Shipping,1500,2011 Interiors Blvd,99236,US,United States of America,2,Americas
-121,101,Dwight,Fripp,Mechanical Engineer & Foundry Manager,https://swx-strapi-events-images.s3.amazonaws.com/dwight.JPG,AFRIPP,650.123.2234,2005-05-09T20:00:00.000Z,staff,8200,,50,5500,California,8500,Shipping,1500,2011 Interiors Blvd,99236,US,United States of America,2,Americas
-122,121,Telly,Kaufling,Fabrication Specialist,https://bumbeishvili.github.io/avatars/avatars/portrait31.png,PKAUFLIN,650.123.3234,2003-05-31T19:00:00.000Z,staff,7900,,50,5500,California,8500,Shipping,1500,2011 Interiors Blvd,99236,US,United States of America,2,Americas
-123,121,Luka,Vollman,Mechanical Engineer ,https://bumbeishvili.github.io/avatars/avatars/portrait4.png,SVOLLMAN,650.123.4234,2005-11-09T20:00:00.000Z,intern,6500,,50,5500,California,8500,Shipping,1500,2011 Interiors Blvd,99236,US,United States of America,2,Americas
-124,101,Amanda,Mourgos,Tech Transfer & Stem Manager,https://swx-strapi-events-images.s3.amazonaws.com/amanda.JPG,KMOURGOS,650.123.5234,2007-12-15T20:00:00.000Z,staff,5800,,50,5500,California,8500,Shipping,1500,2011 Interiors Blvd,99236,US,United States of America,2,Americas
-125,124,Caleb,Nayer,Market Research,https://swx-strapi-events-images.s3.amazonaws.com/caleb.jpg,JNAYER,650.124.1214,2005-08-15T20:00:00.000Z,intern,3200,,50,2008,California,5000,Shipping,1500,2011 Interiors Blvd,99236,US,United States of America,2,Americas
-126,124,Jonathan,Mikkilineni,Market Research,https://swx-strapi-events-images.s3.amazonaws.com/jonathan.jpg,IMIKKILI,650.124.1224,2006-10-27T20:00:00.000Z,intern,2700,,50,2008,California,5000,Shipping,1500,2011 Interiors Blvd,99236,US,United States of America,2,Americas
-127,124,Joseph,Landry,Market Research,https://swx-strapi-events-images.s3.amazonaws.com/joseph.jpg,JLANDRY,650.124.1334,2007-02-13T20:00:00.000Z,intern,2400,,50,2008,California,5000,Shipping,1500,2011 Interiors Blvd,99236,US,United States of America,2,Americas
-128,100,Brian,Markle,CTO,https://swx-strapi-events-images.s3.amazonaws.com/brian.JPG,SMARKLE,650.124.1434,2008-04-07T20:00:00.000Z,staff,2200,,50,2008,California,5000,Shipping,1500,2011 Interiors Blvd,99236,US,United States of America,2,Americas
-129,128,Jack,Bissot,Robotics,https://bumbeishvili.github.io/avatars/avatars/portrait11.png,LBISSOT,650.124.5234,2005-09-19T20:00:00.000Z,intern,3300,,50,2008,California,5000,Shipping,1500,2011 Interiors Blvd,99236,US,United States of America,2,Americas
-130,128,Jill,Atkinson,Electrical Engineer,https://bumbeishvili.github.io/avatars/avatars/portrait50.png,MATKINSO,650.124.6234,2005-11-29T20:00:00.000Z,intern,2800,,50,2008,California,5000,Shipping,1500,2011 Interiors Blvd,99236,US,United States of America,2,Americas
-131,100,Marcus,Marlow,Marketing Manager,https://swx-strapi-events-images.s3.amazonaws.com/marcus.JPG,JAMRLOW,650.124.7234,2005-03-15T21:00:00.000Z,staff,2500,,50,2008,California,5000,Shipping,1500,2011 Interiors Blvd,99236,US,United States of America,2,Americas
-132,131,Justin,Olson,Graphic Designer,https://bumbeishvili.github.io/avatars/avatars/portrait52.png,TJOLSON,650.124.8234,2007-05-09T20:00:00.000Z,staff,2100,,50,2008,California,5000,Shipping,1500,2011 Interiors Blvd,99236,US,United States of America,2,Americas
-133,131,Cole,Mallin,Videographer,https://bumbeishvili.github.io/avatars/avatars/portrait54.png,JMALLIN,650.127.1934,2004-07-13T20:00:00.000Z,intern,3300,,50,2008,California,5000,Shipping,1500,2011 Interiors Blvd,99236,US,United States of America,2,Americas
-134,131,Linda,Rogers,Social Media,https://bumbeishvili.github.io/avatars/avatars/portrait56.png,MROGERS,650.127.1834,2006-09-25T20:00:00.000Z,intern,2900,,50,2008,California,5000,Shipping,1500,2011 Interiors Blvd,99236,US,United States of America,2,Americas
-135,131,Tina,Gee,Social Media,https://bumbeishvili.github.io/avatars/avatars/portrait13.png,KGEE,650.127.1734,2008-01-11T20:00:00.000Z,intern,2400,,50,2008,California,5000,Shipping,1500,2011 Interiors Blvd,99236,US,United States of America,2,Americas
+id,parentId,name,department,position,image,email,job_id
+100,,Leslie,Head Shed,Director,https://swx-strapi-events-images.s3.amazonaws.com/leslie.JPG,leslie.babich@sofwerx.org,staff
+101,100,Tony,Head Shed,Deputy Director,https://swx-strapi-events-images.s3.amazonaws.com/tony.JPG,anthony.pettengill@sofwerx.org,staff
+102,101,Loretta,Bean Counters,Office Controller,https://bumbeishvili.github.io/avatars/avatars/portrait16.png,loretta.mclean@sofwerx.org,staff
+103,102,Mike,Bean Counters,Accounts Payable,https://bumbeishvili.github.io/avatars/avatars/portrait17.png,michael.yordy@sofwerx.org,staff
+104,102,Margaret,Bean Counters,Business Admin,https://bumbeishvili.github.io/avatars/avatars/portrait18.png,margaret.kilmon.intern@sofwerx.org,intern
+105,101,Claire,Events & Meetings,Events & Meetings Manager,https://swx-strapi-events-images.s3.amazonaws.com/claire.JPG,claire.hawley@sofwerx.org,staff
+106,105,Tikela,Events & Meetings,Administrative Assistant,https://swx-strapi-events-images.s3.amazonaws.com/tikila.JPG,tikela.edwards@sofwerx.org,staff
+107,105,Gabrielle,Events & Meetings,Lead Event Coordinator,https://swx-strapi-events-images.s3.amazonaws.com/gaby.JPG,gabrielle.robles@sofwerx.org,staff
+108,107,Kristen,Events & Meetings,Event Coordinator,https://bumbeishvili.github.io/avatars/avatars/portrait61.png,kristen.foraker@sofwerx.org,staff
+109,107,TBD,Events & Meetings,Event Coordinator,https://bumbeishvili.github.io/avatars/avatars/portrait20.png,tbd@sofwerx.org,staff
+110,101,David,PMs,Lead Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/david.JPG,david.akers@sofwerx.org,staff
+111,110,Dennis,PMs,Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/dennis.JPG,dennis.hocking@sofwerx.org,staff
+112,110,Steve,PMs,Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/steve.JPG,steven.kresl@sofwerx.org,staff
+113,110,Stan,PMs,Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/stan.JPG,stan.fleischhauer@sofwerx.org,staff
+114,101,Hansel,Nerd Herd,Software Developer / Manager,https://swx-strapi-events-images.s3.amazonaws.com/hansel.JPG,hansel.rios@sofwerx.org,staff
+115,114,Terry,Nerd Herd,Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/terry.JPG,terry.hunt@sofwerx.org,staff
+116,114,Landon,Nerd Herd,Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/landon.JPG,landon.braye@sofwerx.org,staff
+117,114,Kevin W.,Nerd Herd,Senior System Administrator,https://swx-strapi-events-images.s3.amazonaws.com/dub.JPG,kevin.weintraub@sofwerx.org,staff
+118,117,Kevin S.,Nerd Herd,System Administrator,https://swx-strapi-events-images.s3.amazonaws.com/kevin.JPG,kevin.starr@sofwerx.org,staff
+119,118,Kristian,Nerd Herd,IT Intern,https://swx-strapi-events-images.s3.amazonaws.com/kristian.JPG,kristian.sidwell.intern@sofwerx.org,intern
+120,114,Amber,Nerd Herd,Computer Science,https://swx-strapi-events-images.s3.amazonaws.com/amber.JPG,amber.nguyen@sofwerx.org,intern
+121,101,Dwight,Foundry,Mechanical Engineer & Foundry Manager,https://swx-strapi-events-images.s3.amazonaws.com/dwight.JPG,dwight.crawford@sofwerx.org,staff
+122,121,Telly,Foundry,Fabrication Specialist,https://bumbeishvili.github.io/avatars/avatars/portrait31.png,telly.davis@sofwerx.org,staff
+123,121,Luka,Foundry,Mechanical Engineer ,https://bumbeishvili.github.io/avatars/avatars/portrait4.png,luka.zadrima.intern@sofwerx.org,intern
+124,101,Amanda,T2/Stem,Tech Transfer & Stem Manager,https://swx-strapi-events-images.s3.amazonaws.com/amanda.JPG,amanda.roark@sofwerx.org,staff
+125,124,Caleb,T2/Stem,Market Research,https://swx-strapi-events-images.s3.amazonaws.com/caleb.jpg,caleb.sutton.intern@sofwerx.org,intern
+126,124,Jonathan,T2/Stem,Market Research,https://swx-strapi-events-images.s3.amazonaws.com/jonathan.jpg,jonathan.castillo-negron.intern@sofwerx.org,intern
+127,124,Joseph,T2/Stem,Market Research,https://swx-strapi-events-images.s3.amazonaws.com/joseph.jpg,joseph.peacock.intern@sofwerx.org,intern
+128,100,Brian,CTO,CTO,https://swx-strapi-events-images.s3.amazonaws.com/brian.JPG,brian.andrews@sofwerx.org,staff
+129,128,Jack,CTO,Robotics,https://bumbeishvili.github.io/avatars/avatars/portrait11.png,tbd@sofwerx.org,intern
+130,128,Christian,CTO,Electrical Engineer,https://bumbeishvili.github.io/avatars/avatars/portrait50.png,christian.lovetere.intern@sofwerx.org,intern
+131,100,Marcus,Marketing,Marketing Manager,https://swx-strapi-events-images.s3.amazonaws.com/marcus.JPG,marcus.tatum@sofwerx.org,staff
+132,131,Justin,Marketing,Graphic Designer,https://bumbeishvili.github.io/avatars/avatars/portrait52.png,justin.guinane@sofwerx.org,staff
+133,131,Francesca,Marketing,Videographer,https://bumbeishvili.github.io/avatars/avatars/portrait54.png,francesca.ippolito.intern@sofwerx.org,intern
+134,131,Linda,Marketing,Social Media,https://bumbeishvili.github.io/avatars/avatars/portrait56.png,tbd@sofwerx.org,intern
+135,131,Tina,Marketing,Social Media,https://bumbeishvili.github.io/avatars/avatars/portrait13.png,tbd@sofwerx.org,intern
+136,121,Sabrina,Foundry,Mechanical Engineer ,https://swx-strapi-events-images.s3.amazonaws.com/sabrina.png,sabrina.garcia.intern@sofwerx.org,intern 
