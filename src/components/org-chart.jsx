@@ -84,8 +84,8 @@ const OrgChartComponent = () => {
             .svgWidth(window.innerWidth)
             .svgHeight(window.innerHeight)
             .nodeHeight((d) => 110)
-            .nodeWidth((d) => 222)
-            .childrenMargin((d) => 20) // made this smaller 
+            .nodeWidth((d) => 120)
+            .childrenMargin((d) => 50) // made this smaller 
             .compactMarginBetween((d) => 35)
             .compactMarginPair((d) => 30)
             .neighbourMargin((a, b) => 20)
@@ -95,7 +95,7 @@ const OrgChartComponent = () => {
               return `
                 <div style='width:${d.width}px;height:${d.height}px;padding-top:${imageDiffVert - 2}px;padding-left:1px;padding-right:1px'>
                   <div style="font-family: 'Open Sans', sans-serif;background-color:${color};margin-left:-1px;width:${d.width - 2}px;height:${d.height - imageDiffVert}px;border-radius:10px;border: 2px solid #ed6622">
-                    <div style="display:flex;justify-content:flex-end;margin-top:5px;margin-right:8px;color:white; font-weight:bold">
+                    <div style="display:flex;justify-content:flex-end;margin-top:15px;margin-right:8px;color:white; font-weight:bold">
                       <a href="https://teams.microsoft.com/l/chat/0/0?users=${encodeURIComponent(d.data.email)}" target="_blank" style="color:white;margin-right:5px;">
                         <i class="fa-solid fa-comments"></i>
                       </a>
@@ -103,10 +103,10 @@ const OrgChartComponent = () => {
                         <i class="fas fa-envelope"></i>
                       </a>
                     </div>
-                    <div style="background-color:#ed6622;margin-top:${-imageDiffVert - 15}px;margin-left:${15}px;border-radius:100px;width:50px;height:50px;" ></div>
+                    <div style="background-color:#ed6622;margin-top:${-imageDiffVert - 25}px;margin-left:${15}px;border-radius:100px;width:50px;height:50px;" ></div>
                     <div style="margin-top:${-imageDiffVert - 22.5}px;"><img src="${d.data.image}" style="margin-left:${17.5}px;border-radius:100px;width:45px;height:45px;" /></div>
-                    <div style="font-size:15px;color:white;margin-left:20px;margin-top:3px; font-weight:bold">${d.data.name}</div>
-                    <div style="color:white;margin-left:20px;margin-top:1.5px;font-size:10px; font-weight:bold">${d.data.position}</div>
+                    <div style="font-size:15px;color:white; margin-top:3px; font-weight:bold; text-align: center;">${d.data.name}</div>
+                    <div style="color:white; margin-top:1px;font-size:10px; font-weight:bold;line-height: 1.1; text-align: center;">${d.data.position}</div> <!-- Adjusted line-height -->
                   </div>
                 </div>
               `;
@@ -136,6 +136,7 @@ const OrgChartComponent = () => {
                 .attr("y", 23);
               
               nodeSelection.select('.node-button-foreign-object')
+                  .attr('x', '10')
                   .attr('y', '5');
 
               nodeSelection.select('.node-button-div > div')
@@ -164,10 +165,12 @@ const OrgChartComponent = () => {
       save: false,
       full: true,
       onLoad: (base64) => {
+        console.log('Image is loading...'); // Add console log here
         const pdf = new jsPDF('landscape'); // Specify landscape orientation
         const img = new Image();
         img.src = base64;
         img.onload = function () {
+          console.log('Image loaded successfully.'); // Add console log here
           const aspectRatio = img.height / img.width;
           const imgWidth = 300; // Width of A4 page in mm
           const imgHeight = imgWidth * aspectRatio;
@@ -177,6 +180,7 @@ const OrgChartComponent = () => {
       },
     });
   };
+  
 
   const handleExpandAll = () => {
     if (chartInstance.current) {
