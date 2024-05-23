@@ -99,7 +99,7 @@ const OrgChartComponent = () => {
                       <a href="https://teams.microsoft.com/l/chat/0/0?users=${encodeURIComponent(d.data.email)}" target="_blank" style="color:white;margin-right:5px;">
                         <i class="fa-solid fa-comments"></i>
                       </a>
-                      <a href="mailto:${d.data.email}" style="color:white;">
+                      <a href="mailto:${d.data.email}" target="_blank" style="color:white;">
                         <i class="fas fa-envelope"></i>
                       </a>
                     </div>
@@ -111,10 +111,6 @@ const OrgChartComponent = () => {
                 </div>
               `;
             })
-            
-            
-            
-                     
             .container(chartRef.current)
             .data(filteredData)
             .layout('bottom')
