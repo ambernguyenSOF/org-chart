@@ -3,12 +3,12 @@ id,parentId,name,department,position,image,email,job_id
 101,100,Tony,Head Shed,Deputy Director,https://swx-strapi-events-images.s3.amazonaws.com/tony.JPG,anthony.pettengill@sofwerx.org,staff
 102,101,Loretta,Bean Counters,Office Controller,https://bumbeishvili.github.io/avatars/avatars/portrait16.png,loretta.mclean@sofwerx.org,staff
 103,102,Mike,Bean Counters,Accounts Payable,https://bumbeishvili.github.io/avatars/avatars/portrait17.png,michael.yordy@sofwerx.org,staff
-104,102,Margaret,Bean Counters,Business Admin,https://bumbeishvili.github.io/avatars/avatars/portrait18.png,margaret.kilmon.intern@sofwerx.org,intern
+104,102,Margaret,Bean Counters,Business Admin,https://swx-strapi-events-images.s3.amazonaws.com/Margaret.jpg,margaret.kilmon.intern@sofwerx.org,intern
 105,101,Claire,Events & Meetings,Events & Meetings Manager,https://swx-strapi-events-images.s3.amazonaws.com/claire.JPG,claire.hawley@sofwerx.org,staff
 106,105,Tikela,Events & Meetings,Administrative Assistant,https://swx-strapi-events-images.s3.amazonaws.com/tikila.JPG,tikela.edwards@sofwerx.org,staff
 107,105,Gabrielle,Events & Meetings,Lead Event Coordinator,https://swx-strapi-events-images.s3.amazonaws.com/gaby.JPG,gabrielle.robles@sofwerx.org,staff
-108,107,Kristen,Events & Meetings,Event Coordinator,https://bumbeishvili.github.io/avatars/avatars/portrait61.png,kristen.foraker@sofwerx.org,staff
-109,107,TBD,Events & Meetings,Event Coordinator,https://bumbeishvili.github.io/avatars/avatars/portrait20.png,tbd@sofwerx.org,staff
+108,107,Kristen,Events & Meetings,Event Coordinator,https://swx-strapi-events-images.s3.amazonaws.com/kristen.jpg,kristen.foraker@sofwerx.org,staff
+109,107,Alana,Events & Meetings,Event Coordinator,https://bumbeishvili.github.io/avatars/avatars/portrait20.png,tbd@sofwerx.org,staff
 110,101,David,PMs,Lead Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/david.JPG,david.akers@sofwerx.org,staff
 111,110,Dennis,PMs,Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/dennis.JPG,dennis.hocking@sofwerx.org,staff
 112,110,Steve,PMs,Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/steve.JPG,steven.kresl@sofwerx.org,staff
@@ -23,16 +23,15 @@ id,parentId,name,department,position,image,email,job_id
 121,101,Dwight,Foundry,Mechanical Engineer & Foundry Manager,https://swx-strapi-events-images.s3.amazonaws.com/dwight.JPG,dwight.crawford@sofwerx.org,staff
 122,121,Telly,Foundry,Fabrication Specialist,https://bumbeishvili.github.io/avatars/avatars/portrait31.png,telly.davis@sofwerx.org,staff
 123,121,Luka,Foundry,Mechanical Engineer ,https://bumbeishvili.github.io/avatars/avatars/portrait4.png,luka.zadrima.intern@sofwerx.org,intern
+136,121,Sabrina,Foundry,Mechanical Engineer ,https://swx-strapi-events-images.s3.amazonaws.com/sabrina.png,sabrina.garcia.intern@sofwerx.org,intern 
 124,101,Amanda,T2/Stem,Tech Transfer & Stem Manager,https://swx-strapi-events-images.s3.amazonaws.com/amanda.JPG,amanda.roark@sofwerx.org,staff
 125,124,Caleb,T2/Stem,Market Research,https://swx-strapi-events-images.s3.amazonaws.com/caleb.jpg,caleb.sutton.intern@sofwerx.org,intern
 126,124,Jonathan,T2/Stem,Market Research,https://swx-strapi-events-images.s3.amazonaws.com/jonathan.jpg,jonathan.castillo-negron.intern@sofwerx.org,intern
 127,124,Joseph,T2/Stem,Market Research,https://swx-strapi-events-images.s3.amazonaws.com/joseph.jpg,joseph.peacock.intern@sofwerx.org,intern
 128,100,Brian,CTO,CTO,https://swx-strapi-events-images.s3.amazonaws.com/brian.jpg,brian.andrews@sofwerx.org,staff
-129,128,Jack,CTO,Robotics,https://bumbeishvili.github.io/avatars/avatars/portrait11.png,tbd@sofwerx.org,intern
-130,128,Christian,CTO,Electrical Engineer,https://bumbeishvili.github.io/avatars/avatars/portrait50.png,christian.lovetere.intern@sofwerx.org,intern
+129,128,Maxim,CTO,Robotics,https://bumbeishvili.github.io/avatars/avatars/portrait11.png,tbd@sofwerx.org,intern
+130,128,Christian,CTO,Electrical Engineer,https://swx-strapi-events-images.s3.amazonaws.com/christian.jpg,christian.lovetere.intern@sofwerx.org,intern
 131,100,Marcus,Marketing,Marketing Manager,https://swx-strapi-events-images.s3.amazonaws.com/marcus.JPG,marcus.tatum@sofwerx.org,staff
 132,131,Justin,Marketing,Graphic Designer,https://bumbeishvili.github.io/avatars/avatars/portrait52.png,justin.guinane@sofwerx.org,staff
 133,131,Francesca,Marketing,Videographer,https://bumbeishvili.github.io/avatars/avatars/portrait54.png,francesca.ippolito.intern@sofwerx.org,intern
 134,131,Linda,Marketing,Social Media,https://bumbeishvili.github.io/avatars/avatars/portrait56.png,tbd@sofwerx.org,intern
-135,131,Tina,Marketing,Social Media,https://bumbeishvili.github.io/avatars/avatars/portrait13.png,tbd@sofwerx.org,intern
-136,121,Sabrina,Foundry,Mechanical Engineer ,https://swx-strapi-events-images.s3.amazonaws.com/sabrina.png,sabrina.garcia.intern@sofwerx.org,intern 

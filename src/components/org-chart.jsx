@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const getInternIds = (data) => {
   const internIds = [];
   data.forEach((person) => {
-    if (person.job_id === "intern") {
+    if (person.job_id === 'intern') {
       internIds.push(person.id);
     }
   });
@@ -23,9 +23,8 @@ const getInternIds = (data) => {
 // if includeInterns is true, return all the data. if includeInterns is false, only keep people who's job_id is not intern
 const filterData = (data, includeInterns) => {
   if (includeInterns) return data;
-  return data.filter(person => person.job_id !== "intern");
+  return data.filter((person) => person.job_id !== 'intern');
 };
-
 
 // Component for the org chart
 const OrgChartComponent = () => {
@@ -62,10 +61,14 @@ const OrgChartComponent = () => {
   // useEffect to handle search term
   useEffect(() => {
     if (filteredData) {
-      const data = filteredData.map(d => ({
+      const data = filteredData.map((d) => ({
         ...d,
-        _highlighted: searchTerm !== '' && d.name.toLowerCase().includes(searchTerm.toLowerCase()),
-        _expanded: searchTerm !== '' && d.name.toLowerCase().includes(searchTerm.toLowerCase())
+        _highlighted:
+          searchTerm !== '' &&
+          d.name.toLowerCase().includes(searchTerm.toLowerCase()),
+        _expanded:
+          searchTerm !== '' &&
+          d.name.toLowerCase().includes(searchTerm.toLowerCase()),
       }));
       if (chartInstance.current) {
         chartInstance.current.data(data).render().fit();
@@ -76,16 +79,19 @@ const OrgChartComponent = () => {
   // Rendering the org chart
   useEffect(() => {
     if (filteredData) {
-      if (chartRef.current) { // checks if chartRef is attached to a DOM element
-        if (chartInstance.current) { // checks if a chart instance already exists
+      if (chartRef.current) {
+        // checks if chartRef is attached to a DOM element
+        if (chartInstance.current) {
+          // checks if a chart instance already exists
           chartInstance.current.data(filteredData).render().fit(); // Update existing chart with new data, re-renders, and fits in container
-        } else { // if no chart instance exists
+        } else {
+          // if no chart instance exists
           chartInstance.current = new OrgChart() // initialize new OrgChart instance
-            .svgWidth(window.innerWidth)
+            .svgWidth(window.innerWidth / 4)
             .svgHeight(window.innerHeight)
             .nodeHeight((d) => 110)
             .nodeWidth((d) => 120)
-            .childrenMargin((d) => 50) // made this smaller 
+            .childrenMargin((d) => 50) // made this smaller
             .compactMarginBetween((d) => 35)
             .compactMarginPair((d) => 30)
             .neighbourMargin((a, b) => 20)
@@ -93,20 +99,42 @@ const OrgChartComponent = () => {
               const color = d.data.job_id === 'intern' ? '#2D8D8F' : '#28282a'; // Different color for interns
               const imageDiffVert = 25;
               return `
-                <div style='width:${d.width}px;height:${d.height}px;padding-top:${imageDiffVert - 2}px;padding-left:1px;padding-right:1px'>
-                  <div style="font-family: 'Open Sans', sans-serif;background-color:${color};margin-left:-1px;width:${d.width - 2}px;height:${d.height - imageDiffVert}px;border-radius:10px;border: 2px solid #ed6622">
+                <div style='width:${d.width}px;height:${
+                d.height
+              }px;padding-top:${
+                imageDiffVert - 2
+              }px;padding-left:1px;padding-right:1px'>
+                  <div style="font-family: 'Open Sans', sans-serif;background-color:${color};margin-left:-1px;width:${
+                d.width - 2
+              }px;height:${
+                d.height - imageDiffVert
+              }px;border-radius:10px;border: 2px solid #ed6622">
                     <div style="display:flex;justify-content:flex-end;margin-top:15px;margin-right:8px;color:white; font-weight:bold">
-                      <a href="https://teams.microsoft.com/l/chat/0/0?users=${encodeURIComponent(d.data.email)}" target="_blank" style="color:white;margin-right:5px;">
+                      <a href="https://teams.microsoft.com/l/chat/0/0?users=${encodeURIComponent(
+                        d.data.email
+                      )}" target="_blank" style="color:white;margin-right:5px;">
                         <i class="fa-solid fa-comments"></i>
                       </a>
-                      <a href="mailto:${d.data.email}" target="_blank" style="color:white;">
+                      <a href="mailto:${
+                        d.data.email
+                      }" target="_blank" style="color:white;">
                         <i class="fas fa-envelope"></i>
                       </a>
                     </div>
-                    <div style="background-color:#ed6622;margin-top:${-imageDiffVert - 25}px;margin-left:${15}px;border-radius:100px;width:50px;height:50px;" ></div>
-                    <div style="margin-top:${-imageDiffVert - 22.5}px;"><img src="${d.data.image}" style="margin-left:${17.5}px;border-radius:100px;width:45px;height:45px;" /></div>
-                    <div style="font-size:15px;color:white; margin-top:3px; font-weight:bold; text-align: center;">${d.data.name}</div>
-                    <div style="color:white; margin-top:1px;font-size:10px; font-weight:bold;line-height: 1.1; text-align: center;">${d.data.position}</div> <!-- Adjusted line-height -->
+                    <div style="background-color:#ed6622;margin-top:${
+                      -imageDiffVert - 25
+                    }px;margin-left:${15}px;border-radius:100px;width:50px;height:50px;" ></div>
+                    <div style="margin-top:${
+                      -imageDiffVert - 22.5
+                    }px;"><img src="${
+                d.data.image
+              }" style="margin-left:${17.5}px;border-radius:100px;width:45px;height:45px;" /></div>
+                    <div style="font-size:15px;color:white; margin-top:3px; font-weight:bold; text-align: center;">${
+                      d.data.name
+                    }</div>
+                    <div style="color:white; margin-top:1px;font-size:10px; font-weight:bold;line-height: 1.1; text-align: center;">${
+                      d.data.position
+                    }</div> <!-- Adjusted line-height -->
                   </div>
                 </div>
               `;
@@ -116,43 +144,55 @@ const OrgChartComponent = () => {
             .layout('bottom')
             .linkUpdate(function (d, i, arr) {
               d3.select(this)
-                .attr('stroke', d => d.data._upToTheRootHighlighted ? '#E27396' : '#ed6622')
-                .attr('stroke-width', d => d.data._upToTheRootHighlighted ? 5 : 2)
-                
+                .attr('stroke', (d) =>
+                  d.data._upToTheRootHighlighted ? '#E27396' : '#ed6622'
+                )
+                .attr('stroke-width', (d) =>
+                  d.data._upToTheRootHighlighted ? 5 : 2
+                );
 
               if (d.data._upToTheRootHighlighted) {
                 d3.select(this).raise();
               }
             })
             .nodeUpdate(function (d, i, arr) {
-
               var nodeSelection = d3.select(this);
-              nodeSelection.select('.node-rect')
-                .attr("stroke", d => d.data._highlighted || d.data._upToTheRootHighlighted ? '#FFCE07' : 'none')
-                .attr("stroke-width", d.data._highlighted || d.data._upToTheRootHighlighted ? 15 : 1)
-                .attr("width", d => d.data._highlighted ? 224 : d.width)  // Adjust width based on highlight state
-                .attr("height", d => d.data._highlighted ? 90 : d.height)  // Adjust height based on highlight state
-                .attr("x", 0)
-                .attr("y", 23);
-              
-              nodeSelection.select('.node-button-foreign-object')
-                  .attr('x', '10')
-                  .attr('y', '5');
+              nodeSelection
+                .select('.node-rect')
+                .attr('stroke', (d) =>
+                  d.data._highlighted || d.data._upToTheRootHighlighted
+                    ? '#FFCE07'
+                    : 'none'
+                )
+                .attr(
+                  'stroke-width',
+                  d.data._highlighted || d.data._upToTheRootHighlighted ? 15 : 1
+                )
+                .attr('width', (d) => (d.data._highlighted ? 224 : d.width)) // Adjust width based on highlight state
+                .attr('height', (d) => (d.data._highlighted ? 90 : d.height)) // Adjust height based on highlight state
+                .attr('x', 0)
+                .attr('y', 23);
 
-              nodeSelection.select('.node-button-div > div')
-                  .style('background', '#ED6622')
-                  .style('stroke', 'black');
-              
-              nodeSelection.selectAll('.node-button-div > div > div > span')
-                  .style('color', 'black')
-                  .style('font-weight', 'bold');
-              nodeSelection.select('.node-button-div > div > div > span > svg > path')
-                  .style('stroke', 'black')
-                  .style('fill', 'black')
+              nodeSelection
+                .select('.node-button-foreign-object')
+                .attr('x', '10')
+                .attr('y', '5');
+
+              nodeSelection
+                .select('.node-button-div > div')
+                .style('background', '#ED6622')
+                .style('stroke', 'black');
+
+              nodeSelection
+                .selectAll('.node-button-div > div > div > span')
+                .style('color', 'black')
+                .style('font-weight', 'bold');
+              nodeSelection
+                .select('.node-button-div > div > div > span > svg > path')
+                .style('stroke', 'black')
+                .style('fill', 'black');
             })
             .render();
-
-            
 
           chartInstance.current.fit();
         }
@@ -180,7 +220,6 @@ const OrgChartComponent = () => {
       },
     });
   };
-  
 
   const handleExpandAll = () => {
     if (chartInstance.current) {
@@ -197,21 +236,21 @@ const OrgChartComponent = () => {
   return (
     <div>
       <input
-        type="checkbox"
+        type='checkbox'
         checked={includeInterns}
         onChange={() => setIncludeInterns(!includeInterns)} // Toggle the state when checkbox is changed
       />
       Include Interns
       <button onClick={downloadPdf}>Export PDF</button>
       <input
-        type="search"
-        placeholder="Search by name"
+        type='search'
+        placeholder='Search by name'
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <button onClick={handleExpandAll}>Expand All</button>
       <button onClick={handleCollapseAll}>Collapse All</button>
-      <div className="chart-container" ref={chartRef}></div>
+      <div className='chart-container' ref={chartRef}></div>
     </div>
   );
 };
