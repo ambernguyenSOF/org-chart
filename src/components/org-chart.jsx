@@ -37,6 +37,7 @@ const OrgChartComponent = () => {
   const [departments, setDepartments] = useState([]); // State to store unique departments
   const [selectedDepartments, setSelectedDepartments] = useState([]); // State to store selected departments for highlighting
   const [expandedNodes, setExpandedNodes] = useState([]); // State to store expanded nodes
+  const [selectAll, setSelectAll] = useState(true); // State to track if the "Select All" button is toggled
   const departmentColors = useRef({}); // Ref to store department colors
 
   // useEffect runs the fetchData function once the component mounts
@@ -292,6 +293,36 @@ const OrgChartComponent = () => {
     }
   };
 
+  const handleSelectAll = () => {
+    setSelectedDepartments(departments); // Select all departments
+    setExpandedNodes(filteredData.map((d) => d.id)); // Expand all nodes
+
+    // Update chart with the new expanded and highlighted nodes
+    const updatedData = filteredData.map((d) => ({
+      ...d,
+      _expanded: true,
+      _highlighted: departments.includes(d.department),
+      _highlightColor: getDepartmentColor(d.department),
+    }));
+    if (chartInstance.current) {
+      chartInstance.current.data(updatedData).render().fit();
+    }
+  };
+
+  const handleDeselectAll = () => {
+    setSelectedDepartments([]); // Deselect all departments
+
+    // Update chart to remove highlights
+    const updatedData = filteredData.map((d) => ({
+      ...d,
+      _highlighted: false,
+      _highlightColor: null,
+    }));
+    if (chartInstance.current) {
+      chartInstance.current.data(updatedData).render().fit();
+    }
+  };
+
   return (
     <div>
       <input
@@ -313,23 +344,27 @@ const OrgChartComponent = () => {
       />
       <button onClick={handleExpandAll}>Expand All</button>
       <button onClick={handleCollapseAll}>Collapse All</button>
-      <div>
+      <button onClick={handleSelectAll}>Select All Departments</button>
+      <button onClick={handleDeselectAll}>Deselect All Departments</button>
+      <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
         {departments.map((department) => (
-          <div key={department}>
-            <input
-              type='checkbox'
-              id={department}
-              name={department}
-              checked={selectedDepartments.includes(department)}
-              onChange={() => handleDepartmentChange(department)}
-            />
-            {department}
-          </div>
-        ))}
-      </div>
+            <div key={department} style={{ marginRight: '10px' }}>
+                <input
+                    type='checkbox'
+                    id={department}
+                    name={department}
+                    checked={selectedDepartments.includes(department)}
+                    onChange={() => handleDepartmentChange(department)}
+                />
+        {department}
+     </div>
+  ))}
+</div>
+
       <div className='chart-container' ref={chartRef}></div>
     </div>
   );
 };
+
 
 export default OrgChartComponent;
