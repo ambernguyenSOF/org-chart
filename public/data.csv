@@ -15,7 +15,7 @@ id,parentId,name,department,position,image,email,job_id
 113,110,Stan,PMs,Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/stan.JPG,stan.fleischhauer@sofwerx.org,staff
 114,101,Hansel,Nerd Herd,Software Developer / Manager,https://swx-strapi-events-images.s3.amazonaws.com/hansel.JPG,hansel.rios@sofwerx.org,staff
 115,114,Terry,Nerd Herd,Full-Stack Developer,https://swx-strapi-events-images.s3.amazonaws.com/terry.JPG,terry.hunt@sofwerx.org,staff
-116,114,Landon,Nerd Herd,Netwirk Security Engineer,https://swx-strapi-events-images.s3.amazonaws.com/landon.JPG,landon.braye@sofwerx.org,staff
+116,114,Landon,Nerd Herd,Network Security Engineer,https://swx-strapi-events-images.s3.amazonaws.com/landon.JPG,landon.braye@sofwerx.org,staff
 117,114,Kevin W.,Nerd Herd,Senior System Administrator,https://swx-strapi-events-images.s3.amazonaws.com/dub.JPG,kevin.weintraub@sofwerx.org,staff
 118,117,Kevin S.,Nerd Herd,System Administrator,https://swx-strapi-events-images.s3.amazonaws.com/kevin.JPG,kevin.starr@sofwerx.org,staff
 119,118,Kristian,Nerd Herd,IT Intern,https://swx-strapi-events-images.s3.amazonaws.com/kristian.JPG,kristian.sidwell.intern@sofwerx.org,intern
