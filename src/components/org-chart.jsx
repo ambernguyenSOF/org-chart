@@ -34,47 +34,73 @@ const OrgChartComponent = () => {
   const [chartData, setChartData] = useState(null); // State to store the chart data
   const [searchTerm, setSearchTerm] = useState(''); // State to store the search term
   const [filteredData, setFilteredData] = useState(null); // State to store the filtered data
+  const [departments, setDepartments] = useState([]); // State to store unique departments
+  const [selectedDepartments, setSelectedDepartments] = useState([]); // State to store selected departments for highlighting
+  const [expandedNodes, setExpandedNodes] = useState([]); // State to store expanded nodes
+  const departmentColors = useRef({}); // Ref to store department colors
 
   // useEffect runs the fetchData function once the component mounts
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch('/data.csv'); // Fetch the data from the provided URL
-        const data = await response.text(); // reads the response and converts it to text
+        const data = await response.text(); // Reads the response and converts it to text
         const parsedData = d3.csvParse(data); // Parse the data into the format expected by d3-org-chart
-        setChartData(parsedData); // set the chartData state to the parsedData
+        setChartData(parsedData); // Set the chartData state to the parsedData
+
+        // Extract unique departments and set them
+        const uniqueDepartments = [...new Set(parsedData.map((d) => d.department))];
+        setDepartments(uniqueDepartments); // Set the departments state to uniqueDepartments
+        generateDepartmentColors(uniqueDepartments); // Generate colors for each department
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
-    fetchData(); // call fetchData
+    fetchData(); // Call fetchData
   }, []);
+
+  // Function to generate a unique color for each department and store it in the ref
+  const generateDepartmentColors = (uniqueDepartments) => {
+    const colors = ['#FFCE07', '#FF8C00', '#FF6347', '#40E0D0', '#2E8B57', '#9370DB', '#FF69B4', '#8A2BE2', '#A52A2A', '#5F9EA0'];
+    uniqueDepartments.forEach((department, index) => {
+      departmentColors.current[department] = colors[index % colors.length];
+    });
+  };
 
   // useEffect to filter data based on interns toggle
   useEffect(() => {
     if (chartData) {
       const data = filterData(chartData, includeInterns); // Filter the data based on whether includeInterns is true or false
-      setFilteredData(data); // Update the filteredData state
+      const updatedData = data.map((d) => ({
+        ...d,
+        _expanded: expandedNodes.includes(d.id),
+        _highlighted: selectedDepartments.includes(d.department),
+        _highlightColor: selectedDepartments.includes(d.department)
+          ? getDepartmentColor(d.department)
+          : null,
+      }));
+      setFilteredData(updatedData); // Update the filteredData state
     }
-  }, [includeInterns, chartData]); // Update when includeInterns or chartData changes
+  }, [includeInterns, chartData, expandedNodes, selectedDepartments]); // Update when includeInterns, chartData, expandedNodes, or selectedDepartments change
 
   // useEffect to handle search term
   useEffect(() => {
     if (filteredData) {
       const data = filteredData.map((d) => ({
         ...d,
-        _highlighted:
-          searchTerm !== '' &&
-          d.name.toLowerCase().includes(searchTerm.toLowerCase()),
-        _expanded:
-          searchTerm !== '' &&
-          d.name.toLowerCase().includes(searchTerm.toLowerCase()),
+        _highlighted: searchTerm !== '' && d.name.toLowerCase().includes(searchTerm.toLowerCase()),
+        _expanded: searchTerm !== '' && d.name.toLowerCase().includes(searchTerm.toLowerCase()),
       }));
       if (chartInstance.current) {
         chartInstance.current.data(data).render().fit();
       }
     }
   }, [searchTerm, filteredData]); // Update when searchTerm or filteredData changes
+
+  // Function to get a unique color for each department
+  const getDepartmentColor = (department) => {
+    return departmentColors.current[department] || '#000000';
+  };
 
   // Rendering the org chart
   useEffect(() => {
@@ -161,14 +187,14 @@ const OrgChartComponent = () => {
                 .select('.node-rect')
                 .attr('stroke', (d) =>
                   d.data._highlighted || d.data._upToTheRootHighlighted
-                    ? '#FFCE07'
+                    ? d.data._highlightColor || '#FFCE07'
                     : 'none'
                 )
                 .attr(
                   'stroke-width',
                   d.data._highlighted || d.data._upToTheRootHighlighted ? 15 : 1
                 )
-                .attr('width', (d) => (d.data._highlighted ? 224 : d.width)) // Adjust width based on highlight state
+                .attr('width', (d) => (d.data._highlighted ? 121 : d.width)) // Adjust width based on highlight state
                 .attr('height', (d) => (d.data._highlighted ? 90 : d.height)) // Adjust height based on highlight state
                 .attr('x', 0)
                 .attr('y', 23);
@@ -224,12 +250,45 @@ const OrgChartComponent = () => {
   const handleExpandAll = () => {
     if (chartInstance.current) {
       chartInstance.current.expandAll().render().fit();
+      setExpandedNodes(filteredData.map((d) => d.id)); // Track all expanded nodes
     }
   };
 
   const handleCollapseAll = () => {
     if (chartInstance.current) {
       chartInstance.current.collapseAll().render().fit();
+      setExpandedNodes([]); // Reset expanded nodes when collapsing all
+    }
+  };
+
+  const handleDepartmentChange = (department) => {
+    setSelectedDepartments((prev) => {
+      if (prev.includes(department)) {
+        // Department already selected, remove it
+        return prev.filter((dep) => dep !== department);
+      } else {
+        // Department not selected, add it
+        return [...prev, department];
+      }
+    });
+
+    // Track expanded nodes
+    const updatedExpandedNodes = filteredData
+      .filter((d) => d.department === department || selectedDepartments.includes(d.department))
+      .map((d) => d.id);
+    setExpandedNodes((prev) => [...new Set([...prev, ...updatedExpandedNodes])]);
+
+    // Expand nodes for the selected department
+    if (chartInstance.current) {
+      const updatedData = filteredData.map((d) => ({
+        ...d,
+        _expanded: updatedExpandedNodes.includes(d.id),
+        _highlighted: selectedDepartments.includes(d.department),
+        _highlightColor: selectedDepartments.includes(d.department)
+          ? getDepartmentColor(d.department)
+          : null,
+      }));
+      chartInstance.current.data(updatedData).render().fit();
     }
   };
 
@@ -237,6 +296,8 @@ const OrgChartComponent = () => {
     <div>
       <input
         type='checkbox'
+        id='includeInterns'
+        name='includeInterns'
         checked={includeInterns}
         onChange={() => setIncludeInterns(!includeInterns)} // Toggle the state when checkbox is changed
       />
@@ -244,12 +305,28 @@ const OrgChartComponent = () => {
       <button onClick={downloadPdf}>Export PDF</button>
       <input
         type='search'
+        id='searchByName'
+        name='searchByName'
         placeholder='Search by name'
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <button onClick={handleExpandAll}>Expand All</button>
       <button onClick={handleCollapseAll}>Collapse All</button>
+      <div>
+        {departments.map((department) => (
+          <div key={department}>
+            <input
+              type='checkbox'
+              id={department}
+              name={department}
+              checked={selectedDepartments.includes(department)}
+              onChange={() => handleDepartmentChange(department)}
+            />
+            {department}
+          </div>
+        ))}
+      </div>
       <div className='chart-container' ref={chartRef}></div>
     </div>
   );
