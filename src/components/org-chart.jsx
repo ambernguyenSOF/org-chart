@@ -37,7 +37,6 @@ const OrgChartComponent = () => {
   const [departments, setDepartments] = useState([]); // State to store unique departments
   const [selectedDepartments, setSelectedDepartments] = useState([]); // State to store selected departments for highlighting
   const [expandedNodes, setExpandedNodes] = useState([]); // State to store expanded nodes
-  const [selectAll, setSelectAll] = useState(true); // State to track if the "Select All" button is toggled
   const departmentColors = useRef({}); // Ref to store department colors
 
   // useEffect runs the fetchData function once the component mounts
