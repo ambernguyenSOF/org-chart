@@ -14,16 +14,16 @@ id,parentId,name,department,position,image,email,job_id
 112,110,Steve,PMs,Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/steve.JPG,steven.kresl@sofwerx.org,staff
 113,110,Stan,PMs,Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/stan.JPG,stan.fleischhauer@sofwerx.org,staff
 114,101,Hansel,Nerd Herd,Software Developer / Manager,https://swx-strapi-events-images.s3.amazonaws.com/hansel.JPG,hansel.rios@sofwerx.org,staff
-115,114,Terry,Nerd Herd,Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/terry.JPG,terry.hunt@sofwerx.org,staff
-116,114,Landon,Nerd Herd,Program Manager,https://swx-strapi-events-images.s3.amazonaws.com/landon.JPG,landon.braye@sofwerx.org,staff
+115,114,Terry,Nerd Herd,Full-Stack Developer,https://swx-strapi-events-images.s3.amazonaws.com/terry.JPG,terry.hunt@sofwerx.org,staff
+116,114,Landon,Nerd Herd,Netwirk Security Engineer,https://swx-strapi-events-images.s3.amazonaws.com/landon.JPG,landon.braye@sofwerx.org,staff
 117,114,Kevin W.,Nerd Herd,Senior System Administrator,https://swx-strapi-events-images.s3.amazonaws.com/dub.JPG,kevin.weintraub@sofwerx.org,staff
 118,117,Kevin S.,Nerd Herd,System Administrator,https://swx-strapi-events-images.s3.amazonaws.com/kevin.JPG,kevin.starr@sofwerx.org,staff
 119,118,Kristian,Nerd Herd,IT Intern,https://swx-strapi-events-images.s3.amazonaws.com/kristian.JPG,kristian.sidwell.intern@sofwerx.org,intern
 120,114,Amber,Nerd Herd,Computer Science,https://swx-strapi-events-images.s3.amazonaws.com/amber.JPG,amber.nguyen@sofwerx.org,intern
 121,101,Dwight,Foundry,Mechanical Engineer & Foundry Manager,https://swx-strapi-events-images.s3.amazonaws.com/dwight.JPG,dwight.crawford@sofwerx.org,staff
 122,121,Telly,Foundry,Fabrication Specialist,https://bumbeishvili.github.io/avatars/avatars/portrait31.png,telly.davis@sofwerx.org,staff
-123,121,Luka,Foundry,Mechanical Engineer ,https://bumbeishvili.github.io/avatars/avatars/portrait4.png,luka.zadrima.intern@sofwerx.org,intern
-136,121,Sabrina,Foundry,Mechanical Engineer ,https://swx-strapi-events-images.s3.amazonaws.com/sabrina.png,sabrina.garcia.intern@sofwerx.org,intern
+123,121,Luka,Foundry,Mechanical Engineer,https://swx-strapi-events-images.s3.amazonaws.com/luka.jpg,luka.zadrima.intern@sofwerx.org,intern
+136,121,Sabrina,Foundry,Mechanical Engineer,https://swx-strapi-events-images.s3.amazonaws.com/sabrina.png,sabrina.garcia.intern@sofwerx.org,intern
 124,101,Amanda,T2/Stem,Tech Transfer & Stem Manager,https://swx-strapi-events-images.s3.amazonaws.com/amanda.JPG,amanda.roark@sofwerx.org,staff
 125,124,Caleb,T2/Stem,Market Research,https://swx-strapi-events-images.s3.amazonaws.com/caleb.jpg,caleb.sutton.intern@sofwerx.org,intern
 126,124,Jonathan,T2/Stem,Market Research,https://swx-strapi-events-images.s3.amazonaws.com/jonathan.jpg,jonathan.castillo-negron.intern@sofwerx.org,intern
@@ -32,6 +32,6 @@ id,parentId,name,department,position,image,email,job_id
 129,128,Maxim,CTO,Robotics,https://bumbeishvili.github.io/avatars/avatars/portrait11.png,tbd@sofwerx.org,intern
 130,128,Christian,CTO,Electrical Engineer,https://swx-strapi-events-images.s3.amazonaws.com/christian.jpg,christian.lovetere.intern@sofwerx.org,intern
 131,100,Marcus,Marketing,Marketing Manager,https://swx-strapi-events-images.s3.amazonaws.com/marcus.JPG,marcus.tatum@sofwerx.org,staff
-132,131,Justin,Marketing,Graphic Designer,https://bumbeishvili.github.io/avatars/avatars/portrait52.png,justin.guinane@sofwerx.org,staff
+132,131,Justin,Marketing,Graphic Designer,https://swx-strapi-events-images.s3.amazonaws.com/justin.jpeg,justin.guinane@sofwerx.org,staff
 133,131,Francesca,Marketing,Videographer,https://bumbeishvili.github.io/avatars/avatars/portrait54.png,francesca.ippolito.intern@sofwerx.org,intern
 134,131,TBD,Marketing,Social Media,https://bumbeishvili.github.io/avatars/avatars/portrait56.png,tbd@sofwerx.org,intern
