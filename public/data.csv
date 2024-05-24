@@ -23,7 +23,7 @@ id,parentId,name,department,position,image,email,job_id
 121,101,Dwight,Foundry,Mechanical Engineer & Foundry Manager,https://swx-strapi-events-images.s3.amazonaws.com/dwight.JPG,dwight.crawford@sofwerx.org,staff
 122,121,Telly,Foundry,Fabrication Specialist,https://bumbeishvili.github.io/avatars/avatars/portrait31.png,telly.davis@sofwerx.org,staff
 123,121,Luka,Foundry,Mechanical Engineer ,https://bumbeishvili.github.io/avatars/avatars/portrait4.png,luka.zadrima.intern@sofwerx.org,intern
-136,121,Sabrina,Foundry,Mechanical Engineer ,https://swx-strapi-events-images.s3.amazonaws.com/sabrina.png,sabrina.garcia.intern@sofwerx.org,intern 
+136,121,Sabrina,Foundry,Mechanical Engineer ,https://swx-strapi-events-images.s3.amazonaws.com/sabrina.png,sabrina.garcia.intern@sofwerx.org,intern
 124,101,Amanda,T2/Stem,Tech Transfer & Stem Manager,https://swx-strapi-events-images.s3.amazonaws.com/amanda.JPG,amanda.roark@sofwerx.org,staff
 125,124,Caleb,T2/Stem,Market Research,https://swx-strapi-events-images.s3.amazonaws.com/caleb.jpg,caleb.sutton.intern@sofwerx.org,intern
 126,124,Jonathan,T2/Stem,Market Research,https://swx-strapi-events-images.s3.amazonaws.com/jonathan.jpg,jonathan.castillo-negron.intern@sofwerx.org,intern
