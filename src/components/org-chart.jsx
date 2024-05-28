@@ -144,10 +144,10 @@ const OrgChartComponent = () => {
                 .select('.node-rect')
                 .attr('stroke', (d) => d.data._highlighted || d.data._upToTheRootHighlighted ? d.data._highlightColor || '#FFCE07' : 'none')
                 .attr('stroke-width', d.data._highlighted || d.data._upToTheRootHighlighted ? 12 : 1)
-                .attr('width', (d) => (d.data._highlighted ? 120 : d.width))
-                .attr('height', (d) => (d.data._highlighted ? 87 : d.height))
-                .attr('x', -1)
-                .attr('y', 22);
+                .attr('width', (d) => (d.data._highlighted ? 121 : d.width))
+                .attr('height', (d) => (d.data._highlighted ? 90 : d.height))
+                .attr('x', 0)
+                .attr('y', 23);
 
               nodeSelection
                 .select('.node-button-foreign-object')
