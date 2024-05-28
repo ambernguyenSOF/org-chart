@@ -4,6 +4,7 @@ import * as d3 from 'd3';
 import { jsPDF } from 'jspdf';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+
 // function to get an array of intern ids (just for logging purposes)
 // input: dataset
 const getInternIds = (data) => {
@@ -192,12 +193,12 @@ const OrgChartComponent = () => {
                 )
                 .attr(
                   'stroke-width',
-                  d.data._highlighted || d.data._upToTheRootHighlighted ? 15 : 1
+                  d.data._highlighted || d.data._upToTheRootHighlighted ? 12 : 1
                 )
-                .attr('width', (d) => (d.data._highlighted ? 121 : d.width)) // Adjust width based on highlight state
-                .attr('height', (d) => (d.data._highlighted ? 90 : d.height)) // Adjust height based on highlight state
-                .attr('x', 0)
-                .attr('y', 23);
+                .attr('width', (d) => (d.data._highlighted ? 120 : d.width)) // Adjust width based on highlight state
+                .attr('height', (d) => (d.data._highlighted ? 87 : d.height)) // Adjust height based on highlight state
+                .attr('x', -1)
+                .attr('y', 22);
 
               nodeSelection
                 .select('.node-button-foreign-object')
@@ -231,21 +232,28 @@ const OrgChartComponent = () => {
       save: false,
       full: true,
       onLoad: (base64) => {
-        console.log('Image is loading...'); // Add console log here
+        console.log('Image is loading...');
         const pdf = new jsPDF('landscape'); // Specify landscape orientation
         const img = new Image();
         img.src = base64;
         img.onload = function () {
-          console.log('Image loaded successfully.'); // Add console log here
+          console.log('Image loaded successfully.');
           const aspectRatio = img.height / img.width;
-          const imgWidth = 300; // Width of A4 page in mm
+          const pageWidth = pdf.internal.pageSize.getWidth();
+          const pageHeight = pdf.internal.pageSize.getHeight();
+          const imgWidth = pageWidth - 10; // Width of the image with some margin
           const imgHeight = imgWidth * aspectRatio;
-          pdf.addImage(img, 'JPEG', 5, 5, imgWidth, imgHeight); // Adjust x, y, width, height as needed
+  
+          const x = (pageWidth - imgWidth) / 2; // Center the image horizontally
+          const y = (pageHeight - imgHeight) / 2; // Center the image vertically
+  
+          pdf.addImage(img, 'JPEG', x, y, imgWidth, imgHeight);
           pdf.save('chart.pdf');
         };
       },
     });
   };
+  
 
   const handleExpandAll = () => {
     if (chartInstance.current) {
@@ -323,47 +331,84 @@ const OrgChartComponent = () => {
   };
 
   return (
-    <div>
-      <input
-        type='checkbox'
-        id='includeInterns'
-        name='includeInterns'
-        checked={includeInterns}
-        onChange={() => setIncludeInterns(!includeInterns)} // Toggle the state when checkbox is changed
-      />
-      Include Interns
-      <button onClick={downloadPdf}>Export PDF</button>
-      <input
-        type='search'
-        id='searchByName'
-        name='searchByName'
-        placeholder='Search by name'
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <button onClick={handleExpandAll}>Expand All</button>
-      <button onClick={handleCollapseAll}>Collapse All</button>
-      <button onClick={handleSelectAll}>Select All Departments</button>
-      <button onClick={handleDeselectAll}>Deselect All Departments</button>
-      <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
-        {departments.map((department) => (
-            <div key={department} style={{ marginRight: '10px' }}>
-                <input
-                    type='checkbox'
-                    id={department}
-                    name={department}
-                    checked={selectedDepartments.includes(department)}
-                    onChange={() => handleDepartmentChange(department)}
-                />
-        {department}
-     </div>
-  ))}
-</div>
-
-      <div className='chart-container' ref={chartRef}></div>
+    <div style={{ background: "#D3D7D6" }}>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-lg-2 my-4">
+            <div className="mb-3">
+              <input
+                type="search"
+                id="searchInterns"
+                name="searchInterns"
+                className="form-control"
+                placeholder="Search for employee..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                type="checkbox"
+                id="includeInterns"
+                name="includeInterns"
+                checked={includeInterns}
+                onChange={() => setIncludeInterns(!includeInterns)}
+              />
+              <label htmlFor="includeInterns" className="ms-2">Include Interns</label>
+            </div>
+            <div className="mb-3">
+              <button className="btn btn-secondary w-100" style={{ backgroundColor: "#ED6622", color: "#fff", border: "none", fontWeight: "bold"}} onClick={handleExpandAll}>Expand All</button>
+            </div>
+            <div className="mb-3">
+              <button className="btn btn-secondary w-100" style={{ backgroundColor: "#ED6622", color: "#fff", border: "none", fontWeight: "bold"}} onClick={handleCollapseAll}>Collapse All</button>
+            </div>
+            <div className="accordion mb-3" id="accordionExample">
+              <div className="accordion-item">
+                <h2 className="accordion-header" id="headingTwo">
+                  <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Departments
+                  </button>
+                </h2>
+                <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                  <div className="accordion-body">
+                    {departments.map((department) => (
+                      <div key={department} className="form-check">
+                        <input
+                          type="checkbox"
+                          id={department}
+                          name={department}
+                          className="form-check-input"
+                          checked={selectedDepartments.includes(department)}
+                          onChange={() => handleDepartmentChange(department)}
+                        />
+                        <label htmlFor={department} className="form-check-label">
+                          {department}
+                        </label>
+                      </div>
+                    ))}
+                    <div className="mt-3">
+                      <button className="btn btn-secondary w-100 mb-2" style={{ backgroundColor: "#ED6622", color: "#fff", border: "none", fontWeight: "bold"}} onClick={handleSelectAll}>Select All Departments</button>
+                      <button className="btn btn-secondary w-100" style={{ backgroundColor: "#ED6622", color: "#fff", border: "none", fontWeight: "bold"}} onClick={handleDeselectAll}>Deselect All Departments</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="mb-3">
+              <button className="btn btn-primary w-100" style={{ backgroundColor: "#ED6622", color: "#fff", border: "none", fontWeight: "bold"}} onClick={downloadPdf}>Export PDF</button>
+            </div>
+          </div>
+          <div className="col-lg-10">
+            <div className="chart-container" ref={chartRef}></div>
+          </div>
+        </div>
+      </div>
     </div>
   );
-};
-
+  
+  
+  
+  
+}
 
 export default OrgChartComponent;
